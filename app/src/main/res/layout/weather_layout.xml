@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/_8sdp"
+    app:cardElevation="@dimen/_8sdp"
+    android:layout_margin="@dimen/_4sdp"
+    app:cardMaxElevation="@dimen/_8sdp"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:padding="@dimen/_8sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_marginTop="@dimen/_8sdp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold"
+            android:fontFamily="@font/roboto"
+            android:id="@+id/text_wetherCutyName"
+            android:text="Number"/>
+
+
+
+        <LinearLayout
+            android:layout_alignParentRight="true"
+            android:id="@+id/layout_tep"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+           <RelativeLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content">
+
+               <TextView
+                   android:layout_toEndOf="@+id/text_degvalue"
+                   android:layout_centerHorizontal="true"
+                   android:textColor="@color/black"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="@dimen/_8sdp"
+                   android:fontFamily="@font/roboto"
+                   android:id="@+id/textDeg"
+                   android:text="0"/>
+
+               <TextView
+                   android:textColor="@color/black"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="@dimen/_14sdp"
+                   android:fontFamily="@font/roboto"
+                   android:id="@+id/text_degvalue"
+                   android:text="25"/>
+           </RelativeLayout>
+
+            <TextView
+               android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_12sdp"
+                android:fontFamily="@font/roboto"
+                android:text="C"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_below="@+id/text_wetherCutyName"
+            android:id="@+id/layout_id"
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+
+
+            <TextView
+                android:textColor="@color/black"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_14sdp"
+                android:fontFamily="@font/roboto"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:id="@+id/text_wetherStatus"
+                android:text="sys"/>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

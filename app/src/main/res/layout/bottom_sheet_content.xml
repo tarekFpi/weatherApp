@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_200sdp"
+    android:orientation="vertical"
+    android:id="@+id/bottom_sheet"
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="@dimen/_80sdp"
+    android:fitsSystemWindows="true"
+    android:background="@color/white"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    >
+
+    <LinearLayout
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_14sdp"
+                android:fontFamily="@font/roboto"
+                android:textStyle="bold"
+                android:id="@+id/textwetherDetails_name"
+                android:text="Weather App"/>
+
+            <TextView
+                android:layout_marginTop="@dimen/_4sdp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_14sdp"
+                android:fontFamily="@font/roboto"
+                android:id="@+id/description"
+                android:text="description"/>
+
+            <TextView
+                android:layout_marginTop="@dimen/_4sdp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_14sdp"
+                android:fontFamily="@font/roboto"
+                android:id="@+id/feels_like"
+                android:text="feels like"/>
+
+
+            <TextView
+                android:layout_marginTop="@dimen/_4sdp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_14sdp"
+                android:fontFamily="@font/roboto"
+                android:id="@+id/temp_min"
+                android:text="temp min"/>
+
+            <TextView
+                android:layout_marginTop="@dimen/_4sdp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_14sdp"
+                android:fontFamily="@font/roboto"
+                android:id="@+id/temp_max"
+                android:text="temp max"/>
+            <TextView
+                android:id="@+id/pressure"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_14sdp"
+                android:fontFamily="@font/roboto"
+                android:text="pressure"/>
+
+            <TextView
+                android:id="@+id/humidity"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_14sdp"
+                android:fontFamily="@font/roboto"
+                android:text="humidity"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_route"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/layout_tep"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_toEndOf="@+id/text_Details_degvalue"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/black"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_8sdp"
+                        android:fontFamily="@font/roboto"
+                        android:id="@+id/textDeg"
+                        android:text="0"/>
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_18sdp"
+                        android:fontFamily="@font/roboto"
+                        android:id="@+id/text_Details_degvalue"
+                        android:text="25"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:layout_marginStart="@dimen/_2sdp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_12sdp"
+                    android:fontFamily="@font/roboto"
+                    android:text="C"/>
+            </LinearLayout>
+
+             <ImageView
+                 android:layout_width="@dimen/_42sdp"
+                 android:layout_height="@dimen/_42sdp"
+                 android:src="@drawable/cloudy_day"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</LinearLayout>

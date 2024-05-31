@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Weather Apps</string>
+    <string name="google_maps_key">AIzaSyBjXcqOT4CPR-xseDQjhJYUY0_JtlAjXRE</string>
+    <string-array name="placement_slide">
+        <item>selected item</item>
+        <item>Team-A</item>
+        <item>Team-B</item>
+        <item>Team-C</item>
+    </string-array>
+    <string name="title_activity_login">LoginActivity</string>
+
+    <style name="OutlinedRoundedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="shapeAppearanceOverlay">
+            @style/ShapeAppearanceOverlay.MyApp.TextInputLayout.Rounded
+        </item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MyApp.TextInputLayout.Rounded" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+        <item name="boxStrokeColor">@color/white</item>
+    </style>
+
+    <string name="title_activity_maps">MapsActivity</string>
+</resources>
