@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -29,16 +30,12 @@ import com.google.android.gms.maps.model.MarkerOptions
 import java.util.Timer
 import java.util.TimerTask
 
-class MapsActivity : AppCompatActivity(),  OnMapReadyCallback,
-    GoogleApiClient.ConnectionCallbacks,
-    GoogleApiClient.OnConnectionFailedListener,
-    LocationListener {
+class MapsActivity : AppCompatActivity(),  OnMapReadyCallback
+
+     {
 
     private var mMap: GoogleMap? = null
-    private var client: GoogleApiClient? = null
-    private var locationRequest: LocationRequest? = null
     val REQUEST_LOCATION_CODE = 99
-
 
     private lateinit var  progressBar: ProgressDialog
     private var latitude:Double = 0.0
@@ -60,6 +57,8 @@ class MapsActivity : AppCompatActivity(),  OnMapReadyCallback,
     private lateinit var textViewHumidity:TextView
 
     private lateinit var textViewDescription:TextView
+
+    private lateinit var countryName:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,10 +92,15 @@ class MapsActivity : AppCompatActivity(),  OnMapReadyCallback,
     override fun onResume() {
         super.onResume()
 
-
         val bundle: Bundle? = intent.extras
 
         if (bundle != null) {
+
+            latitude= bundle.getString("lat")!!.toDouble()
+
+            longitude= bundle.getString("lon")!!.toDouble()
+
+            countryName =  bundle.getString("name").toString()
 
             //Program to convert Fahrenheit into Celsius
             val temp =((bundle.getDouble("temp")-32)* 5)/9
@@ -130,21 +134,26 @@ override fun onMapReady(googleMap: GoogleMap) {
            Manifest.permission.ACCESS_FINE_LOCATION
        ) == PackageManager.PERMISSION_GRANTED
    ) {
-       bulidGoogleApiClient()
-       mMap!!.isMyLocationEnabled = false
-       /*mMap!!.setOnMyLocationButtonClickListener(OnMyLocationButtonClickListener {
-           false
-       })*/
 
+       mMap!!.isMyLocationEnabled = true
+       mMap!!.setOnMyLocationButtonClickListener(OnMyLocationButtonClickListener {
+
+           Handler().postDelayed({
+
+               mMap!!.clear()
+               getWeatherLocation()
+
+           }, 1500)
+
+           false
+       })
+
+
+       getWeatherLocation()
    }
 }
 
-@Synchronized
-protected fun bulidGoogleApiClient() {
-   client = GoogleApiClient.Builder(this).addConnectionCallbacks(this)
-       .addOnConnectionFailedListener(this).addApi(LocationServices.API).build()
-   client!!.connect()
-}
+
 
 fun checkLocationPermission(): Boolean {
    return if (ContextCompat.checkSelfPermission(
@@ -174,67 +183,20 @@ fun checkLocationPermission(): Boolean {
    } else true
 }
 
-override fun onConnected(p0: Bundle?) {
-
-   locationRequest = LocationRequest()
-   locationRequest!!.setInterval(5000)
-   locationRequest!!.setFastestInterval(5000)
-   locationRequest!!.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY)
-
-   if (ContextCompat.checkSelfPermission(
-           this,
-           Manifest.permission.ACCESS_FINE_LOCATION
-       ) == PackageManager.PERMISSION_GRANTED
-   ) {
-       LocationServices.FusedLocationApi.requestLocationUpdates(
-           client!!,
-           locationRequest!!,
-           this
-       )
-   }
-}
-
-override fun onConnectionSuspended(p0: Int) {
-   TODO("Not yet implemented")
-}
-
-override fun onConnectionFailed(p0: ConnectionResult) {
-   TODO("Not yet implemented")
-}
-
-override fun onLocationChanged(location: Location) {
-
-    getWeatherLocation()
-}
 
   private  fun getWeatherLocation(){
-
-      val bundle: Bundle? = intent.extras
-
-      if (bundle != null) {
-
-          latitude= bundle.getString("lat")!!.toDouble()
-
-
-          longitude= bundle.getString("lon")!!.toDouble()
-
 
           val latLng = LatLng(latitude, longitude)
           val markerOptions = MarkerOptions()
           markerOptions.position(latLng)
-          markerOptions.title("${bundle.getString("name")}")
+          markerOptions.title("$countryName")
           markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
           mMap?.addMarker(markerOptions)
           mMap?.moveCamera(CameraUpdateFactory.newLatLng(latLng))
           mMap?.animateCamera(CameraUpdateFactory.zoomBy(18f))
           progressBar.dismiss()
 
-          if (client != null) {
-              LocationServices.FusedLocationApi.removeLocationUpdates(client!!, this)
-          }
-      }else{
-          Toast.makeText(this, "null", Toast.LENGTH_SHORT).show()
-      }
+
     }
 
 
