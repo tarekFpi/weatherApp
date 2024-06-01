@@ -30,7 +30,7 @@
         android:textSize="@dimen/_14sdp"
         android:drawableLeft="@drawable/baseline_search_24"
         android:background="@drawable/search_shap"
-        android:hint="Searh for text.."
+        android:hint="Search for name.."
         android:layout_marginLeft="@dimen/_10sdp"
         android:layout_marginRight="@dimen/_10sdp"
         android:layout_width="match_parent"
